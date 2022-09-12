@@ -96,13 +96,17 @@ pub fn main() {
     );
 
     print_sizes!(
-        "Composite enums (multiple variants)",
+        "Composite enums with two variants",
         Comp2R0,
-        Comp2R0R1,
         Comp2R1,
-        Comp2R1R2,
         Comp2R2,
-        Comp2R2R3,
         Comp2R257,
+    );
+
+    print_sizes!(
+        "Composite enums two different variants",
+        Comp2R0R1,
+        Comp2R1R2,
+        Comp2R2R3,
     );
 }
