@@ -186,6 +186,7 @@ pub fn main() {
         "Composite enums two different variants",
         Comp2R0R1,
         Comp2R1R2,
+        Option<R2>,
         Comp2R2R3,
         Comp2R0R257,
         Comp2R1R257,

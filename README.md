@@ -125,6 +125,7 @@ size of Comp3R257:  4 bytes
 ```
 size of Comp2R0R1:      0 bytes
 size of Comp2R1R2:      1 bytes
+size of Option<R2>:     1 bytes
 size of Comp2R2R3:      2 bytes
 size of Comp2R0R257:    2 bytes
 size of Comp2R1R257:    2 bytes
@@ -148,6 +149,13 @@ when I expected to earlier! Who's on first?
 Anyway, that's interesting and I totally agree with the rust compiler
 that it should be able to differentiate between 3 different possible
 variants with only 1 byte of tag info.
+
+Arg!! Actually, this is totally expected behavior because this
+optimization is basically just the Rust compiler recognizing that
+Comp2R1R2 is structurally identical to `Option<R2>` and doing the same
+optimization! The fact that it's the structure of `Option` that's
+being recognized (rather than that specific type) is actually pretty
+cool in itself though.
 
 The very next value then is surprising again though, because for some
 reason when we get to Comp2R2R3 we suddenly need 2 bytes for the tag!
