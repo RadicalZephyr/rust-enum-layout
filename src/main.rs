@@ -109,7 +109,7 @@ macro_rules! print_sizes {
     { $heading:literal, $( $ty_name:ty ),* $(,)? } => {
         println!(concat!("\n", $heading));
         $(
-            println!("size of {}: {} bytes", stringify!($ty_name), size_of::<$ty_name>());
+            println!("size of {}:\t{} bytes", stringify!($ty_name), size_of::<$ty_name>());
         )*
     };
 }
