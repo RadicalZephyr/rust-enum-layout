@@ -40,18 +40,37 @@ enum Comp1R3 {
     A(R3),
 }
 
+enum Comp1R257 {
+    A(R257),
+}
+
 enum Comp2R0 {
     A(R0),
     B(R0),
 }
 
-enum Comp2R0R1 {
-    A(R0),
+enum Comp2R1 {
+    A(R1),
     B(R1),
 }
 
-enum Comp2R1 {
-    A(R1),
+enum Comp2R2 {
+    A(R2),
+    B(R2),
+}
+
+enum Comp2R3 {
+    A(R3),
+    B(R3),
+}
+
+enum Comp2R257 {
+    A(R257),
+    B(R257),
+}
+
+enum Comp2R0R1 {
+    A(R0),
     B(R1),
 }
 
@@ -60,18 +79,28 @@ enum Comp2R1R2 {
     B(R2),
 }
 
-enum Comp2R2 {
-    A(R2),
-    B(R2),
-}
-
 enum Comp2R2R3 {
     A(R2),
     B(R3),
 }
 
-enum Comp2R257 {
-    A(R257),
+enum Comp2R0R257 {
+    A(R0),
+    B(R257),
+}
+
+enum Comp2R1R257 {
+    A(R1),
+    B(R257),
+}
+
+enum Comp2R2R257 {
+    A(R2),
+    B(R257),
+}
+
+enum Comp2R3R257 {
+    A(R3),
     B(R257),
 }
 
@@ -147,6 +176,7 @@ pub fn main() {
         Comp1R1,
         Comp1R2,
         Comp1R3,
+        Comp1R257,
     );
 
     print_sizes!(
@@ -154,6 +184,7 @@ pub fn main() {
         Comp2R0,
         Comp2R1,
         Comp2R2,
+        Comp2R3,
         Comp2R257,
     );
 
@@ -162,6 +193,10 @@ pub fn main() {
         Comp2R0R1,
         Comp2R1R2,
         Comp2R2R3,
+        Comp2R0R257,
+        Comp2R1R257,
+        Comp2R2R257,
+        Comp2R3R257,
     );
 
     print_sizes!(
