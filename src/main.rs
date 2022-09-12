@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::mem::size_of;
+use std::{mem::size_of, num::NonZeroU8};
 
 enum R0 {}
 
@@ -186,7 +186,10 @@ pub fn main() {
         "Composite enums two different variants",
         Comp2R0R1,
         Comp2R1R2,
+        Option<R1>,
         Option<R2>,
+        Option<NonZeroU8>,
+        Option<u8>,
         Comp2R2R3,
         Comp2R0R257,
         Comp2R1R257,
