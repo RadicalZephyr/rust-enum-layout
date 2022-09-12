@@ -224,6 +224,38 @@ pub fn main() {
         N2C2R2,
         N2C2R257,
     );
+
+    print_sizes!(
+        "Larger alignment types",
+        A64,
+        R1A64,
+        R2A64,
+        A128,
+        R1A128,
+        R2A128
+    );
+}
+
+struct A64(u64);
+
+enum R1A64 {
+    A(A64),
+}
+
+enum R2A64 {
+    A(A64),
+    B(A64),
+}
+
+struct A128(u128);
+
+enum R1A128 {
+    A(A128),
+}
+
+enum R2A128 {
+    A(A128),
+    B(A128),
 }
 
 enum N1C1R1 {
