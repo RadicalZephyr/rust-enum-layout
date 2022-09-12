@@ -213,4 +213,49 @@ pub fn main() {
         Comp3R2R257,
         Comp3R3R257,
     );
+
+    print_sizes!(
+        "Nested composite types",
+        N1C1R1,
+        N1C1R2,
+        N1C2R1,
+        N1C2R2,
+        N1C2R257,
+        N2C2R2,
+        N2C2R257,
+    );
+}
+
+enum N1C1R1 {
+    A(Comp1R1),
+    B(Comp1R1),
+}
+
+enum N1C1R2 {
+    A(Comp1R2),
+    B(Comp1R2),
+}
+
+enum N1C2R1 {
+    A(Comp2R1),
+    B(Comp2R1),
+}
+
+enum N1C2R2 {
+    A(Comp2R2),
+    B(Comp2R2),
+}
+enum N1C2R257 {
+    A(Comp2R257),
+    B(Comp2R257),
+}
+
+enum N2C2R2 {
+    A(N1C2R2),
+    B(N1C2R2),
+}
+
+enum N2C2R257 {
+    A(N1C2R257),
+    B(N1C2R257),
 }
