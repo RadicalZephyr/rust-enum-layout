@@ -44,11 +44,6 @@ enum Comp1R257 {
     A(R257),
 }
 
-enum Comp2R0 {
-    A(R0),
-    B(R0),
-}
-
 enum Comp2R1 {
     A(R1),
     B(R1),
@@ -181,7 +176,6 @@ pub fn main() {
 
     print_sizes!(
         "Composite enums with two variants",
-        Comp2R0,
         Comp2R1,
         Comp2R2,
         Comp2R3,
