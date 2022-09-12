@@ -40,14 +40,29 @@ enum Comp2R0 {
     B(R0),
 }
 
+enum Comp2R0R1 {
+    A(R0),
+    B(R1),
+}
+
 enum Comp2R1 {
     A(R1),
     B(R1),
 }
 
-enum Comp2R0R1 {
-    A(R0),
-    B(R1),
+enum Comp2R1R2 {
+    A(R1),
+    B(R2),
+}
+
+enum Comp2R2 {
+    A(R2),
+    B(R2),
+}
+
+enum Comp2R2R3 {
+    A(R2),
+    B(R3),
 }
 
 macro_rules! print_sizes {
@@ -73,7 +88,10 @@ pub fn main() {
     print_sizes!(
         "Composite enums (multiple variants)",
         Comp2R0,
-        Comp2R1,
         Comp2R0R1,
+        Comp2R1,
+        Comp2R1R2,
+        Comp2R2,
+        Comp2R2R3,
     );
 }
