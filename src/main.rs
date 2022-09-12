@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::{mem::size_of, num::NonZeroU8};
+use std::{mem::size_of, net::SocketAddr, num::NonZeroU8};
 
 enum R0 {}
 
@@ -236,6 +236,94 @@ pub fn main() {
         R1A128,
         R2A128
     );
+
+    print_sizes!("Enums with pointers", Vec<u8>, R2Vec, C2R2Vec, N2C2R2Vec);
+
+    print_sizes!(
+        "petty enum types",
+        String,
+        Vec<u8>,
+        SocketAddr,
+        ErrorCode,
+        Error,
+        Command,
+        Event
+    );
+}
+
+/// A code indicating the nature of a protocol error.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ErrorCode {
+    /// Not defined, see error message (if any).
+    Undefined,
+    /// File not found.
+    FileNotFound,
+    /// Access violation.
+    AccessViolation,
+    /// Disk full or allocation exceeded.
+    DiskFull,
+    /// Illegal TFTP operation.
+    IllegalOperation,
+    /// Unknown transfer ID.
+    UnknownTransferId,
+    /// File already exists.
+    FileAlreadyExists,
+    /// No such user.
+    NoSuchUser,
+    /// An unknown error code, not to be confused with `Undefined`. This variant
+    /// is a catchall for any errors not covered by RFCs.
+    Unknown(u16),
+}
+
+/// A protocol error.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Error {
+    /// A code indicating the nature of the error.
+    pub code: ErrorCode,
+    /// A message describing the error which is intended for human consumption.
+    pub message: String,
+}
+
+pub enum Command {
+    ReadBlockFromFile,
+    SendPacket {
+        packet: Vec<u8>,
+        address: SocketAddr,
+    },
+    EmitEvent(Event),
+    Terminate {
+        error: Option<(Error, SocketAddr)>,
+    },
+}
+
+#[derive(Debug, PartialEq)]
+pub enum Event {
+    ReceivedBlockFromFile {
+        data: Vec<u8>,
+    },
+    ReceivedAck {
+        block: u16,
+    },
+    EndOfFile,
+    ReceivedPacket {
+        packet: Vec<u8>,
+        address: SocketAddr,
+    },
+}
+
+enum R2Vec {
+    A(Vec<u8>),
+    B(Vec<u8>),
+}
+
+enum C2R2Vec {
+    A(R2Vec),
+    B(R2Vec),
+}
+
+enum N2C2R2Vec {
+    A(C2R2Vec),
+    B(C2R2Vec),
 }
 
 struct A64(u64);
