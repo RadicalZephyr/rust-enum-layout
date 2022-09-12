@@ -230,6 +230,8 @@ pub fn main() {
         A64,
         R1A64,
         R2A64,
+        C2R2A64,
+        N1C2R2A64,
         A128,
         R1A128,
         R2A128
@@ -247,6 +249,16 @@ enum R2A64 {
     B(A64),
 }
 
+enum C2R2A64 {
+    A(R2A64),
+    B(R2A64),
+}
+
+enum N1C2R2A64 {
+    A(C2R2A64),
+    B(C2R2A64),
+}
+
 struct A128(u128);
 
 enum R1A128 {
@@ -260,17 +272,14 @@ enum R2A128 {
 
 enum N1C1R1 {
     A(Comp1R1),
-    B(Comp1R1),
 }
 
 enum N1C1R2 {
     A(Comp1R2),
-    B(Comp1R2),
 }
 
 enum N1C2R1 {
     A(Comp2R1),
-    B(Comp2R1),
 }
 
 enum N1C2R2 {
