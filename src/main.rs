@@ -75,6 +75,36 @@ enum Comp2R257 {
     B(R257),
 }
 
+enum Comp3R0 {
+    A(R0),
+    B(R0),
+    C(R0),
+}
+
+enum Comp3R1 {
+    A(R1),
+    B(R1),
+    C(R1),
+}
+
+enum Comp3R2 {
+    A(R2),
+    B(R2),
+    C(R2),
+}
+
+enum Comp3R3 {
+    A(R3),
+    B(R3),
+    C(R3),
+}
+
+enum Comp3R257 {
+    A(R257),
+    B(R257),
+    C(R257),
+}
+
 macro_rules! print_sizes {
     { $heading:literal, $( $ty_name:ty ),* $(,)? } => {
         println!(concat!("\n", $heading));
@@ -108,5 +138,14 @@ pub fn main() {
         Comp2R0R1,
         Comp2R1R2,
         Comp2R2R3,
+    );
+
+    print_sizes!(
+        "Composite enums with 3 variants",
+        Comp3R0,
+        Comp3R1,
+        Comp3R2,
+        Comp3R3,
+        Comp3R257
     );
 }
